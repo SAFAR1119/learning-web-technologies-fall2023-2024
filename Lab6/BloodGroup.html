@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Group Validation</title>
+    <script>
+        function validateForm() {
+            var bloodGroup = document.forms["myForm"]["bloodGroup"].value;
+            var bloodGroupPattern = /^(A|B|AB|O)[+-]$/;
+
+            if (bloodGroup === "") {
+                document.getElementById("bloodGroupError").textContent = "Blood Group must be selected";
+                return false;
+            } else if (!bloodGroup.match(bloodGroupPattern)) {
+                document.getElementById("bloodGroupError").textContent = "Invalid Blood Group format";
+                return false;
+            } else {
+                document.getElementById("bloodGroupError").textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        <label for="bloodGroup">Blood Group:</label>
+        <select id="bloodGroup" name="bloodGroup" onchange="validateForm()">
+            <option value="" disabled selected>Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+        <span id="bloodGroupError" style="color: red;"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

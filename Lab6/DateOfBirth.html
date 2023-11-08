@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateForm() {
+            var dob = document.forms["myForm"]["dob"].value;
+
+            if (dob === "") {
+                document.getElementById("dobError").textContent = "Date of Birth must be filled out";
+                return false;
+            } else {
+                document.getElementById("dobError").textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" onblur="validateForm()">
+        <span id="dobError" style="color: red;"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

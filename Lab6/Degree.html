@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Degree Validation</title>
+    <script>
+        function validateForm() {
+            var degree = document.forms["myForm"]["degree"].value;
+
+            if (degree === "") {
+                document.getElementById("degreeError").textContent = "Degree must be selected";
+                return false;
+            } else {
+                document.getElementById("degreeError").textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        <label for="degree">Degree:</label>
+        <select id="degree" name="degree" onchange="validateForm()">
+            <option value="" disabled selected>Select Degree</option>
+            <option value="SSC">SSC</option>
+            <option value="HSC">HSC</option>
+            <option value="BSc">BSc</option>
+        </select>
+        <span id="degreeError" style="color: red;"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

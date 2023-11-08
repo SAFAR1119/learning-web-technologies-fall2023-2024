@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Picture Validation</title>
+    <script>
+        function validateForm() {
+            var userId = document.forms["myForm"]["userId"].value;
+            var fileInput = document.getElementById("profilePicture");
+
+            if (userId === "") {
+                document.getElementById("userIdError").textContent = "User ID must be provided";
+                return false;
+            } else {
+                document.getElementById("userIdError").textContent = "";
+            }
+
+            if (fileInput.files.length === 0) {
+                document.getElementById("pictureError").textContent = "Please upload a profile picture";
+                return false;
+            } else {
+                document.getElementById("pictureError").textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" onblur="validateForm()">
+        <span id="userIdError" style="color: red;"></span>
+        <br><br>
+
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" onchange="validateForm()">
+        <span id="pictureError" style="color: red;"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
